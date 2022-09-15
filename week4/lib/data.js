@@ -17,12 +17,25 @@ export function getAllIds() {
             }
         }
     });
-
-    return returnedData;
 }
 
 export function getSortedList() {
+    const filePath = path.join(dataDir, 'persons.json');
 
+    const jsonString = fs.readFileSync(filePath, 'utf8');
+
+    const jsonObj = JSON.parse(jsonString);
+
+    jsonObj.sort(function (a,b) {
+        return a.name.localeCompare(b.name);
+    });
+
+    returnObj.map(item => {
+        return {
+            id: item.id.toString(),
+            name: item.name
+        }
+    });
 }
 
 export async function getData(idRequested) {
