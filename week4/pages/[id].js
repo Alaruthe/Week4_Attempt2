@@ -3,7 +3,10 @@ import Head from 'next/head'
 import { getAllIds, getData } from '../lib/data';
 
 export async function getStaticProps( {params} ) {
-    const itemData = await getData(params.id);
+    let itemData = await getData(params.id, false);
+    if(itemData.id == undefined){
+        itemData = await getData(params.id, true);
+    }
     return {
         props: {
             itemData
@@ -12,10 +15,11 @@ export async function getStaticProps( {params} ) {
 }
 
 export async function getStaticPaths(){
-    const paths = getAllIds();
+    const paths = getAllIds(false).concat(getAllIds(true));
     return {
         paths,
         fallback: false
+
     };
 }
 

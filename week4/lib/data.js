@@ -3,8 +3,10 @@ import path from 'path';
 
 const dataDir = path.join( process.cwd(), "data" );
 
-export function getAllIds() {
-    const filePath = path.join(dataDir, 'persons.json');
+export function getAllIds(isdogs) {
+    const filename = (isdogs)?"listing.json":"persons.json";
+
+    const filePath = path.join(dataDir, filename);
 
     const jsonString = fs.readFileSync(filePath, 'utf8');
 
@@ -17,10 +19,14 @@ export function getAllIds() {
             }
         }
     });
+
+    return returnedData;
 }
 
-export function getSortedList() {
-    const filePath = path.join(dataDir, 'persons.json');
+export function getSortedList(isdogs) {
+    const filename = (isdogs)?"listing.json":"persons.json";
+
+    const filePath = path.join(dataDir, filename);
 
     const jsonString = fs.readFileSync(filePath, 'utf8');
 
@@ -30,7 +36,7 @@ export function getSortedList() {
         return a.name.localeCompare(b.name);
     });
 
-    returnObj.map(item => {
+    return jsonObj.map(item => {
         return {
             id: item.id.toString(),
             name: item.name
@@ -38,8 +44,10 @@ export function getSortedList() {
     });
 }
 
-export async function getData(idRequested) {
-    const filePath = path.join(dataDir, 'persons.json');
+export async function getData(idRequested, isdogs) {
+    const filename = (isdogs)?"listing.json":"persons.json";
+
+    const filePath = path.join(dataDir, filename);
 
     const jsonString = fs.readFileSync(filePath, 'utf8');
 
