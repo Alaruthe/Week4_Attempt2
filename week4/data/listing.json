@@ -1,0 +1,26 @@
+[
+    {
+        "name": "Fido",
+        "dogYears": "5",
+        "phone": "Pommeranian",
+        "id": 5
+    },
+    {
+        "name": "Oliver",
+        "dogYears": "8",
+        "phone": "Beagle",
+        "id": 6
+    },
+    {
+        "name": "Poppy",
+        "dogYears": "7",
+        "phone": "Poodle",
+        "id": 7
+    },
+    {
+        "name": "George",
+        "dogYears": "2",
+        "phone": "Husky",
+        "id": 8
+    }
+]
